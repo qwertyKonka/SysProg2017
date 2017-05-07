@@ -4,6 +4,8 @@
 
 int main()
 {
+	//hab ein bisschen geändert um alle funktionen zu prüfen (@Ilja)
+        //pqueue_free() nicht gecheckt weil kein valgrind habe (@Ilja)
 	PrioQueue *queue = pqueue_new();
 
 	pqueue_offer(queue, q_elem_new(3, "1"));
