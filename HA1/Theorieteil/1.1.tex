@@ -1,0 +1,204 @@
+
+
+
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{cmap}					
+\usepackage[T2A]{fontenc}			
+\usepackage[utf8]{inputenc}			
+\usepackage[english,german]{babel}	
+\usepackage{caption}
+\usepackage{indentfirst}
+
+
+\author{...Koniev...}    %SCHREIBEN SIE BITTE HIER IHRE NACHNAMEN
+\title{Aufgabenblatt 1}
+\date{Abgabetermin: 14.05.2017 23:55 Uhr}
+
+\begin{document} 
+
+\maketitle
+
+\section*{Aufgabe 1.2: Betriebssysteme (1,5 Punkte)}
+ a) Welche drei Aufgabenbereiche und sieben Einzelfunktionen besitzt ein Betriebssystem? (0,5 Punkte)
+ 
+\vspace{\baselineskip}
+ \large Grobe Aufteilung in drei Aufgabenbereiche:
+ 
+ \normalsize
+ \begin{enumerate}
+ 	\item Bereitstellung von Hilfsmitteln für Benutzerprogramme
+ 	\item Vernachlässigung der genauen Benutzerkenntnis von HW-Eigenschaften und spezieller SW-Komponenten, wie z.B. Gerätetreiber
+ 	\item Koordination und Vergabe der zur Verfügung stehenden Betriebsmittel an mehrere, gleichzeitig arbeitende Benutzer
+ \end{enumerate}
+
+
+\vspace{\baselineskip}
+\large Einzelfunktionen eines Betriebssystems:
+\normalsize
+\begin{enumerate}
+	\item Unterbrechungsverarbeitung (interrupt handling)
+	\item Verteilung (dispatching): Prozessumschaltung
+	\item Betriebsmittelverwaltung (resource management): Belegen, Freigeben und Betreiben von Betriebsmitteln, Werkzeuge zur Prozesssynchronisation
+	\item Programmallokation (program allocation): Linken von Teilprogrammen, Laden und Verdrängen von Programmen in/aus dem Hauptspeicher
+\end{enumerate}
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\large Grundlegende Betriebssystemfunktionen:
+\normalsize
+\begin{enumerate}
+	\item Dateiverwaltung (filemanagement)
+	\begin{itemize}
+		\item Organisation des Speicherplatzes in Form von Dateien auf Datenträgern
+		\item Bereitstellung von Funktionen zur Speicherung, Modifikation und Wiedergewinnung der gespeicherten Informationen
+	\end{itemize}
+	\item Auftragsteuerung (jobcontrol)
+	\begin{itemize}
+		\item Festlegung der Reihenfolge, in der die eingegangenen Aufträge und deren Bestandteile bearbeitet werden sollen
+	\end{itemize}
+	\item Zuverlässigkeit (reliability)
+	\begin{itemize}
+		\item Funktionen zur Reaktion auf Störungen und Ausfälle der Rechnerhardware sowie auf Fehler in der Software
+		\item Korrektheit, Robustheit und Toleranz (ständig betriebsbereit unter der Aufrechterhaltung einer Mindestfunktionsfähigkeit)
+	\end{itemize}
+\end{enumerate}
+
+\vspace{\baselineskip}
+ b) Was ist der Unterschied zwischen Mechanismen und Policies? Nennen Sie je zwei Beispiele für diese.
+(0,5 Punkte)
+
+\vspace{\baselineskip}
+
+ \large Wichtige Unterscheidung zwischen Mechanismen und Policies:
+ \normalsize
+	\begin{enumerate}
+		\item Mechanismus: Wie wird eine Aufgabe prinzipiell gelöst?
+		\item Policy: Welche Vorgaben/Parameter werden im konkreten Fall eingesetzt?
+	\end{enumerate}
+
+\vspace{\baselineskip}
+
+\large Beispiele:
+\normalsize
+\begin{enumerate}
+	\item Zeitscheibenprinzip
+	\begin {itemize}
+		\item Existenz eines Timerszur Bereitstellung von Unterbrechungen $\Rightarrow$ Mechanismus
+		\item Entscheidung, wie lange die entsprechende Zeit für einzelne Anwendungen / Anwendungsgruppen eingestellt wird $\Rightarrow$ Policy
+	\end{itemize}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+	\item Trennung wichtig für Flexibilität
+	\begin {itemize}
+		\item Policies ändern sich im Laufe der Zeit oder bei unterschiedlichen Plattformen $\Rightarrow$  Falls keine Trennung vorhanden, muss jedes Mal auch der grundlegende Mechanismus geändert werden
+		\item Wünschenswert: Genereller Mechanismus, so dass eine Policiesveränderung durch Anpassung von Parametern umgesetzt werden kann
+	\end{itemize}
+\end{enumerate}
+
+\vspace{\baselineskip}
+c) Nennen Sie die fünf häufigsten Designstrukturen für Betriebssysteme, und beschreiben Sie eine davon
+im Detail. (0,5 Punkte)
+\vspace{\baselineskip}
+
+\large Häufige Designstrukturen für Betriebssysteme:
+\normalsize
+\begin{enumerate}
+	\item Monolithische Systeme
+	\item Geschichtete Systeme
+	\item Virtuelle Maschinen
+	\item Exokern
+	\item Client-Server-Systeme mit Mikrokern
+\end{enumerate}
+
+ \vspace{\baselineskip}
+ \large Monolithische Systeme: Häufigste Realisierungsform
+ \normalsize
+ \begin{enumerate}
+ 	\item Große Menge von Funktionen mit wohl-definierten Schnittstellen für Parameter und Ergebnisse $\Rightarrow$ Alle Funktionen bilden den Objektcode
+ 	\item Hauptprogramm: Ruft die Dienstfunktionen auf
+ 	\item Dienstfunktionen: Führen die Systemaufrufe durch
+ 	\item Hilfsfunktionen: stellen Mechanismen bereit, die von diesen benötigt werden, z.B. Kopieren von Daten aus einem Programm
+ \end{enumerate}
+
+
+\section*{Aufgabe 1.1: Logischer Adressraum (0,5 Punkte)}
+
+	In der Vorlesung haben Sie das Layout des logischen Adressraums kennengelernt. Nachfolgend finden Sie
+den Code für ein einfaches Programm. Skizzieren Sie für die vier markierten Stellen jeweils den Aufbau
+des Stacks.
+\begin{table}
+	\begin{center}
+		\begin{tabular}{|c|}
+	\\ 
+	\hline main() \\ int x = 5;
+	\\ 
+	\hline 
+		\end{tabular}
+	\end{center}
+ \caption*{<<Stelle 1>>}
+\end{table}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+
+\begin{table}
+	\begin{center}
+		\begin{tabular}{|c|}
+			\\ 
+			\hline sum(0) \\ n = 0 \\ return 0;\\
+			\hline sum(1) \\ n = 1 \\ return sum(0) + 1;\\
+			\hline sum(2) \\ n = 2 \\ return sum(1) + 2;\\
+			\hline sum(3) \\ n = 3 \\ return sum(2) + 3;\\
+			\hline sum(4) \\ n = 4 \\ return sum(3) + 4;\\
+			\hline sum(5) \\ n = 5 \\ return sum(4) + 5;\\
+			\hline main() \\ int x = 5;\\
+			\hline 
+		\end{tabular}
+	\end{center}
+	\caption*{<<Stelle 2>>}
+\end{table}
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\begin{table}
+	\begin{center}
+		\begin{tabular}{|c|}
+			\\ 
+			\hline sum\_direkt(5) \\ return 15;\\
+			\hline main() \\ int x = 5;	\\ 
+			\hline 
+		\end{tabular}
+	\end{center}
+	\caption*{<<Stelle 3>>}
+\end{table}
+
+\vspace{\baselineskip}
+
+\begin{table}
+	\begin{center}
+		\begin{tabular}{|c|}
+			\\ 
+			\hline main() \\ int x = 5; \\ ergebnis = 15; \\ ergebnis = 15; \\ return 0;\\
+			\hline 
+		\end{tabular}
+	\end{center}
+	\caption*{<<Stelle 4>>}
+\end{table}
+
+\clearpage
+\section*{Quelle:}
+
+O. Kao: Systemprogrammierung 2017 <<Folie 1>>
+  
+ 
+ 
+ 
+
+
+
+
+\end{document} 
+
